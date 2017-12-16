@@ -2,21 +2,53 @@ console.log('App.js is running!');
 
 //JSX
 
-var testInfo = {title: 'Indecision App',
-                info: 'This is some info',
-                i1: 'Item 1',
-                i2: 'Item 2'};
+var testInfo = {
+    title: 'Indecision App',
+    subtitle: 'This is some info',
+    options: ['One', 'Two'],
+    i1: 'Item 1',
+    i2: 'Item 2'
+};
+
+function getOptions(optionsIn) {
+    if (optionsIn.length > 0) {
+        return <p>"Here are your options:" {optionsIn}</p>
+    }
+}
 
 var template = (
     <div>
         <h1>{testInfo.title}</h1>
-        <p>{testInfo.info}</p>
+        {/*{testInfo.subtitle && <p>{testInfo.subtitle}</p>}*/}
+        {testInfo.subtitle ? <p>{testInfo.subtitle}</p> : false}
+        {getOptions(testInfo.options)}
         <ol>
             <li>{testInfo.i1}</li>
             <li>{testInfo.i2}</li>
         </ol>
     </div>
 );
+
+var user = {
+    name: 'David Scroggins',
+    age: 35,
+    location: 'Chicago, IL'
+};
+
+function getLocation(locationIn) {
+    if (locationIn) {
+        return <p>Location: {locationIn}</p>;
+    }
+}
+
+var template2 = (
+    <div>
+        <h1>{user.name ? user.name : 'Anonymous'}</h1>
+        {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
+        {getLocation(user.location)}
+    </div>
+);
+
 
 var appRoot = document.getElementById('app');
 
