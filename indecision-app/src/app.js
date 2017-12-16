@@ -2,7 +2,7 @@ console.log('App.js is running!');
 
 //JSX
 
-var testInfo = {
+const testInfo = {
     title: 'Indecision App',
     subtitle: 'This is some info',
     options: ['One', 'Two'],
@@ -16,7 +16,7 @@ function getOptions(optionsIn) {
     }
 }
 
-var template = (
+const template = (
     <div>
         <h1>{testInfo.title}</h1>
         {/*{testInfo.subtitle && <p>{testInfo.subtitle}</p>}*/}
@@ -29,7 +29,7 @@ var template = (
     </div>
 );
 
-var user = {
+const user = {
     name: 'David Scroggins',
     age: 35,
     location: 'Chicago, IL'
@@ -41,7 +41,7 @@ function getLocation(locationIn) {
     }
 }
 
-var template2 = (
+const template2 = (
     <div>
         <h1>{user.name ? user.name : 'Anonymous'}</h1>
         {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
@@ -50,6 +50,6 @@ var template2 = (
 );
 
 
-var appRoot = document.getElementById('app');
+const appRoot = document.getElementById('app');
 
 ReactDOM.render(template, appRoot);
