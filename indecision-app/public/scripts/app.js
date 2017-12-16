@@ -4,18 +4,23 @@ console.log('App.js is running!');
 
 //JSX
 
+var testInfo = { title: 'Indecision App',
+    info: 'This is some info',
+    i1: 'Item 1',
+    i2: 'Item 2' };
+
 var template = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        'Indecision App'
+        testInfo.title
     ),
     React.createElement(
         'p',
         null,
-        'This some info'
+        testInfo.info
     ),
     React.createElement(
         'ol',
@@ -23,12 +28,12 @@ var template = React.createElement(
         React.createElement(
             'li',
             null,
-            'Item 1'
+            testInfo.i1
         ),
         React.createElement(
             'li',
             null,
-            'Item 2'
+            testInfo.i2
         )
     )
 );

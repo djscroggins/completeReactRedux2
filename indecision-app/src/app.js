@@ -2,13 +2,18 @@ console.log('App.js is running!');
 
 //JSX
 
+var testInfo = {title: 'Indecision App',
+                info: 'This is some info',
+                i1: 'Item 1',
+                i2: 'Item 2'};
+
 var template = (
     <div>
-        <h1>Indecision App</h1>
-        <p>This some info</p>
+        <h1>{testInfo.title}</h1>
+        <p>{testInfo.info}</p>
         <ol>
-            <li>Item 1</li>
-            <li>Item 2</li>
+            <li>{testInfo.i1}</li>
+            <li>{testInfo.i2}</li>
         </ol>
     </div>
 );
