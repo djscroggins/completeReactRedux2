@@ -1,132 +1,42 @@
 'use strict';
 
-console.log('App.js is running!');
+console.log('build-it-visible.js is running!');
 
-//JSX
-
-var testInfo = {
-    title: 'Indecision App',
-    subtitle: 'This is some info',
-    options: ['One', 'Two'],
-    i1: 'Item 1',
-    i2: 'Item 2'
+var app = {
+    title: 'Visibility Toggle',
+    visibilityState: false,
+    details: 'Here are the hidden details.'
 };
 
-function getOptions(optionsIn) {
-    if (optionsIn.length > 0) {
-        return React.createElement(
-            'p',
-            null,
-            '"Here are your options:" ',
-            optionsIn
-        );
-    }
-}
+var changeVisibilityState = function changeVisibilityState() {
+    app.visibilityState = !app.visibilityState;
+    renderTemplate();
+};
 
-var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        testInfo.title
-    ),
-    testInfo.subtitle ? React.createElement(
-        'p',
-        null,
-        testInfo.subtitle
-    ) : false,
-    getOptions(testInfo.options),
-    React.createElement(
-        'ol',
+var renderTemplate = function renderTemplate() {
+    var template = React.createElement(
+        'div',
         null,
         React.createElement(
-            'li',
+            'h1',
             null,
-            testInfo.i1
+            app.title
         ),
         React.createElement(
-            'li',
-            null,
-            testInfo.i2
-        )
-    )
-);
-
-var user = {
-    name: 'David Scroggins',
-    age: 35,
-    location: 'Chicago, IL'
-};
-
-function getLocation(locationIn) {
-    if (locationIn) {
-        return React.createElement(
+            'button',
+            { onClick: changeVisibilityState },
+            app.visibilityState ? 'Hide details' : 'Show details'
+        ),
+        !app.visibilityState ? null : React.createElement(
             'p',
             null,
-            'Location: ',
-            locationIn
-        );
-    }
-}
+            app.details
+        )
+    );
 
-var template2 = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        user.name ? user.name : 'Anonymous'
-    ),
-    user.age && user.age >= 18 && React.createElement(
-        'p',
-        null,
-        'Age: ',
-        user.age
-    ),
-    getLocation(user.location)
-);
-
-var count = 0;
-
-var addOne = function addOne() {
-    console.log("addOne");
+    ReactDOM.render(template, appRoot);
 };
-
-var minusOne = function minusOne() {
-    console.log("minusOne");
-};
-
-var reset = function reset() {
-    console.log("reset");
-};
-
-var templateTwo = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        'Count: ',
-        count
-    ),
-    React.createElement(
-        'button',
-        { onClick: addOne },
-        '+1'
-    ),
-    React.createElement(
-        'button',
-        { onClick: minusOne },
-        '-1'
-    ),
-    React.createElement(
-        'button',
-        { onClick: reset },
-        'Reset'
-    )
-);
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+renderTemplate();
