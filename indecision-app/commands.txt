@@ -1,0 +1,9 @@
+babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
+
+// To run quick web server
+
+live-server <directory name> // to run app use public folder
+
+// To regenerate node_modules folder
+
+yarn install
