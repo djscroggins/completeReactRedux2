@@ -1,4 +1,5 @@
 // React enforces upper case class names to distinguish between components and html elements
+// This example uses ES6 class syntax
 class IndecisionApp extends React.Component {
     render() {
         const title = 'Indecision';
@@ -48,14 +49,21 @@ class Action extends React.Component {
 }
 
 class Options extends React.Component {
+    // Override constructor
+    constructor(props) {
+        super(props);
+        // Ensures handleRemoveAll always bound to this context
+        this.handleRemoveAll = this.handleRemoveAll.bind(this);
+    }
 
     handleRemoveAll () {
-        alert('handleRemoveAll')
+        console.log(this.props.options)
     }
 
     render() {
         return (
             <div>
+                {/*Will lose this contenxt if not explicitly bound*/}
                 <button onClick={this.handleRemoveAll}>Remove all</button>
                 <p>Length of options: {this.props.options.length}</p>
                 {this.props.options.map((o) => <Option key={o} optionText={o}/>
