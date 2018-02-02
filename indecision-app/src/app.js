@@ -13,6 +13,32 @@ class IndecisionApp extends React.Component {
         };
     }
 
+    componentDidMount () {
+
+        try {
+            // Retrieve options array from local storage
+            const json = localStorage.getItem('options');
+            const options = JSON.parse(json);
+
+            if (options) {
+                // Note: implictly returning options same as options: options
+                this.setState(() => ({options}));
+            }
+        } catch (e) {
+            // Do nothing if json empty; just fall back to empty array
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+
+        // Save options array to local storage if array changes
+        if (prevState.options.length !== this.state.options.length) {
+            const json = JSON.stringify(this.state.options);
+            // First parameter is key for recovery
+            localStorage.setItem('options', json);
+        }
+    }
+
     handleDeleteOptions () {
         // Implicitly return object
         this.setState(() => ({options: []}));
@@ -139,6 +165,7 @@ const Options = (props) => {
         <div>
             {/*Call props method from IndecisionApp component*/}
             <button onClick={props.handleDeleteOptions}>Remove all</button>
+            {props.options.length === 0 ? <p>Please add an option to get started</p> : null}
             {/*key needed for iterators; in this case just assign option name as key*/}
             {props.options.map((o) => (
                 <Option
@@ -212,6 +239,11 @@ class AddOption extends React.Component {
         const error = this.props.handleAddOption(option);
 
         this.setState(() => ({error}));
+
+        // Wipes input after submission
+        if (!error) {
+            event.target.elements.option.value = '';
+        }
 
 
 
