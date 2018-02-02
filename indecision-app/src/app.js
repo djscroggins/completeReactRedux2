@@ -6,8 +6,9 @@ class IndecisionApp extends React.Component {
         super(props);
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
         this.handlePick = this.handlePick.bind(this);
+        this.handleAddOption = this.handleAddOption.bind(this);
         this.state = {
-            options: ['Thing one', 'Thing two', 'Thing four']
+            options: []
         };
     }
 
@@ -23,6 +24,23 @@ class IndecisionApp extends React.Component {
         const randomNum = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[randomNum];
         alert(option);
+    }
+
+    handleAddOption (option) {
+
+        if (!option) {
+            return 'Enter valid value to add item';
+        } else if (this.state.options.indexOf(option) > -1) {
+            return 'This option already exists';
+        }
+
+        this.setState((previousState) => {
+            return {
+                // Use concat instead of push to avoid directly manipulating the state
+                // rather just compute the new one
+                options: previousState.options.concat([option])
+            };
+        });
     }
 
 
@@ -44,7 +62,9 @@ class IndecisionApp extends React.Component {
                     // Pass method to delete option as prop  to Options component
                     handleDeleteOptions={this.handleDeleteOptions}
                 />
-                <AddOption />
+                <AddOption
+                    handleAddOption={this.handleAddOption}
+                />
             </div>
         );
     }
@@ -107,22 +127,39 @@ class Option extends React.Component {
 
 class AddOption extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.handleAddOption = this.handleAddOption.bind(this);
+        this.state = {
+            error: undefined
+        };
+    }
+
+    // Retain this method so we can process form here
     handleAddOption (event) {
 
         event.preventDefault();
 
         // Trim string to avoid spaces being read as input
         const option = event.target.elements.option.value.trim();
+        // This is confusing naming convention; this is the method passed from the parent
+        // Parent method only returns value if error
+        const error = this.props.handleAddOption(option);
 
-        if (option) {
-            alert('handleOption');
-        }
+        this.setState(() => {
+            return {
+                error
+            };
+        });
+
+
 
     }
 
     render() {
         return (
             <div>
+                {this.state.error ? <p>{this.state.error}</p> : null}
                 <form onSubmit={this.handleAddOption}>
                     <input type="text" name="option"/>
                     <button>Add Option</button>
