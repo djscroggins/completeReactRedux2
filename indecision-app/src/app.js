@@ -109,7 +109,6 @@ class Options extends React.Component {
             <div>
                 {/*Call props method from IndecisionApp component*/}
                 <button onClick={this.props.handleDeleteOptions}>Remove all</button>
-                <p>Length of options: {this.props.options.length}</p>
                 {this.props.options.map((o) => <Option key={o} optionText={o}/>
                 )}
             </div>

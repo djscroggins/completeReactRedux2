@@ -181,12 +181,6 @@ var Options = function (_React$Component4) {
                     { onClick: this.props.handleDeleteOptions },
                     'Remove all'
                 ),
-                React.createElement(
-                    'p',
-                    null,
-                    'Length of options: ',
-                    this.props.options.length
-                ),
                 this.props.options.map(function (o) {
                     return React.createElement(Option, { key: o, optionText: o });
                 })
