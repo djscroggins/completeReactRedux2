@@ -65,9 +65,60 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__person_js__ = __webpack_require__(2);
+// import './utils';
+
+
 
 console.log('app.js is running!!!!!');
+console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* square */](4));
+console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["a" /* add */](2, 3));
+console.log('An adult?', __WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* isAdult */](13));
+console.log('Can drink?', __WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrink */](13));
+console.log('An adult?', __WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* isAdult */](18));
+console.log('Can drink?', __WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrink */](18));
+console.log('An adult2?', __WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* isAdult */](21));
+console.log('Can drink2?', __WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrink */](21));
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return square; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return add; });
+console.log('utils.js is running');
+
+const square = (x) => x * x;
+
+const add = (a, b) => a + b;
+
+// Note: this is *not* an object definition
+
+// two types of exports: default and named
+
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return isAdult; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return canDrink; });
+console.log('person.js is running');
+
+const isAdult = (x) => x >= 18;
+
+const canDrink = (x) => x >= 21;
+
+
 
 /***/ })
 /******/ ]);
