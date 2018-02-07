@@ -2,16 +2,14 @@ import React from 'react';
 
 export default class AddOption extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.handleAddOption = this.handleAddOption.bind(this);
-        this.state = {
-            error: undefined
-        };
-    }
+    // Using experimental class properties
+    state = {
+        error: undefined
+    };
 
     // Retain this method so we can process form here
-    handleAddOption(event) {
+
+    handleAddOption = (event) => {
 
         event.preventDefault();
 
@@ -27,9 +25,7 @@ export default class AddOption extends React.Component {
         if (!error) {
             event.target.elements.option.value = '';
         }
-
-
-    }
+    };
 
     render() {
         return (

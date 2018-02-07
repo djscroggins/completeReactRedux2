@@ -6,16 +6,40 @@ import Options from './Options';
 
 export default class IndecisionApp extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-        this.handleDeleteOption = this.handleDeleteOption.bind(this);
-        this.handlePick = this.handlePick.bind(this);
-        this.handleAddOption = this.handleAddOption.bind(this);
-        this.state = {
-            options: []
-        };
-    }
+    // Using experimental class properties; no constructor; class methods are arrow functions that bind
+    // in scope (I actually really don't like this. There is a reason you bind methods to objects.)
+    state = {
+        options: []
+    };
+
+    handleDeleteOptions = () => {
+        // Implicitly return object
+        this.setState(() => ({options: []}));
+    };
+
+    handleDeleteOption = (optionToRemove) => {
+        this.setState((prevState) => ({
+            // If optionToRemove does not equal an option in the array it is retained
+            options: prevState.options.filter((option) => optionToRemove !== option)
+        }));
+    };
+
+    handlePick = () => {
+        const randomNum = Math.floor(Math.random() * this.state.options.length);
+        const option = this.state.options[randomNum];
+        alert(option);
+    };
+
+    handleAddOption = (option) => {
+
+        if (!option) {
+            return 'Enter valid value to add item';
+        } else if (this.state.options.indexOf(option) > -1) {
+            return 'This option already exists';
+        }
+
+        this.setState((previousState) => ({options: previousState.options.concat([option])}));
+    };
 
     componentDidMount() {
 
@@ -42,36 +66,6 @@ export default class IndecisionApp extends React.Component {
             localStorage.setItem('options', json);
         }
     }
-
-    handleDeleteOptions() {
-        // Implicitly return object
-        this.setState(() => ({options: []}));
-    }
-
-    handleDeleteOption(optionToRemove) {
-        this.setState((prevState) => ({
-            // If optionToRemove does not equal an option in the array it is retained
-            options: prevState.options.filter((option) => optionToRemove !== option)
-        }));
-    }
-
-    handlePick() {
-        const randomNum = Math.floor(Math.random() * this.state.options.length);
-        const option = this.state.options[randomNum];
-        alert(option);
-    }
-
-    handleAddOption(option) {
-
-        if (!option) {
-            return 'Enter valid value to add item';
-        } else if (this.state.options.indexOf(option) > -1) {
-            return 'This option already exists';
-        }
-
-        this.setState((previousState) => ({options: previousState.options.concat([option])}));
-    }
-
 
     render() {
         const subtitle = 'Put your life in the hands of a computer';
