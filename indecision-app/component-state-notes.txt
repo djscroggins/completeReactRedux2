@@ -1,4 +1,0 @@
-1. Setup default state object
-2. Component rendered with default state values (this is an implicit render)
-3. Change state based on event
-4. Application brings UI up to date with component state (this is an implicit render)
