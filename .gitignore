@@ -2,3 +2,4 @@ indecision-app/node_modules/*
 *.iml
 indecision-app/commands.txt
 indecision-app/webpack-loader-notes.txt
+notes/
