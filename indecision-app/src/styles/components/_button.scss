@@ -12,13 +12,19 @@
   font-size: $l-size;
   // Make sure button takes up entire container width
   width: 100%;
-  margin-bottom: $xl-size;
+  margin-bottom: $m-size;
   // Spacing between button border and button text
   padding: 2.4rem;
 }
 
 .big-button:disabled {
   opacity: .5;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .big-button {
+    margin-bottom: $xl-size;
+  }
 }
 
 // Smaller button

@@ -12,4 +12,6 @@
   font-weight: 500;
   font-size: 2rem;
   margin: 0;
+  // Keep single long words from overflowing
+  word-break: break-all;
 }
