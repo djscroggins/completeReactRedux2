@@ -15,6 +15,14 @@ module.exports = {
             // Does the file end in .js
             test: /\.js$/,
             exclude: /node_modules/
+        }, {
+            test: /\.scss$/,
+            // Allows you to specify an array of loaders
+            use: [
+                'style-loader',
+                'css-loader',
+                'sass-loader'
+            ]
         }]
     }
     // devtool: 'cheap-module-eval-source-map'
