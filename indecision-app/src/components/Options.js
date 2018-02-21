@@ -1,8 +1,9 @@
 import React from 'react';
 import Option from './Option';
 
-const Options = (props) => {
-    return (
+
+//Implicit return
+const Options = (props) => (
         <div>
             {/*Call props method from IndecisionApp component*/}
             <button onClick={props.handleDeleteOptions}>Remove all</button>
@@ -18,7 +19,7 @@ const Options = (props) => {
             )}
         </div>
     );
-};
+
 
 export default Options;
 
@@ -36,3 +37,24 @@ export default Options;
 //         );
 //     }
 // }
+
+// Explicit return
+
+// const Options = (props) => {
+//     return (
+//         <div>
+//             {/*Call props method from IndecisionApp component*/}
+//             <button onClick={props.handleDeleteOptions}>Remove all</button>
+//             {props.options.length === 0 ? <p>Please add an option to get started</p> : null}
+//             {/*key needed for iterators; in this case just assign option name as key*/}
+//             {props.options.map((o) => (
+//                     <Option
+//                         key={o}
+//                         optionText={o}
+//                         handleDeleteOption={props.handleDeleteOption}
+//                     />
+//                 )
+//             )}
+//         </div>
+//     );
+// };
