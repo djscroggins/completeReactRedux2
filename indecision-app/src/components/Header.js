@@ -1,14 +1,14 @@
 import React from 'react';
 
 
-const Header = (props) => {
-    return (
+// Implicit return
+
+const Header = (props) => (
         <div>
             <h1>{props.title}</h1>
             {props.subtitle ? <h2>{props.subtitle}</h2> : null}
         </div>
     );
-};
 
 // Default prop values
 Header.defaultProps = {
@@ -30,3 +30,14 @@ export default Header;
 //         );
 //     }
 // }
+
+// Explicit return
+
+// const Header = (props) => {
+//     return (
+//         <div>
+//             <h1>{props.title}</h1>
+//             {props.subtitle ? <h2>{props.subtitle}</h2> : null}
+//         </div>
+//     );
+// };

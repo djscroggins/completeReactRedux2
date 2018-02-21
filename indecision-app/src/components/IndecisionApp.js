@@ -3,13 +3,20 @@ import AddOption from './AddOption';
 import Header from './Header';
 import Action from './Action';
 import Options from './Options';
+import OptionModal from './OptionModal';
 
 export default class IndecisionApp extends React.Component {
 
     // Using experimental class properties; no constructor; class methods are arrow functions that bind
     // in scope (I actually really don't like this. There is a reason you bind methods to objects.)
     state = {
-        options: []
+        options: [],
+        selectedOption: undefined
+    };
+
+    // Clears model by resetting state to undefined
+    handleClearSelectedOption = () => {
+        this.setState(() => ({selectedOption: undefined}));
     };
 
     handleDeleteOptions = () => {
@@ -27,7 +34,15 @@ export default class IndecisionApp extends React.Component {
     handlePick = () => {
         const randomNum = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[randomNum];
-        alert(option);
+        // Replace alert option with our new modal component
+        // alert(option);
+        // Overwrite the undefined state by setting selectedOption to selected string
+        // This causes selectedOption in OptionModal to switch to truthy value which is converted to pure boolean
+        // Modal is opened
+        this.setState(() => ({
+            selectedOption: option
+        }));
+
     };
 
     handleAddOption = (option) => {
@@ -86,6 +101,11 @@ export default class IndecisionApp extends React.Component {
                 />
                 <AddOption
                     handleAddOption={this.handleAddOption}
+                />
+                <OptionModal
+                    selectedOption={this.state.selectedOption}
+                    // Pass handler for clearing modal (remember to pass as reference not method call)
+                    handleClearSelectedOption={this.handleClearSelectedOption}
                 />
             </div>
         );

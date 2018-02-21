@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Action = (props) => {
-    return (
+//Implicit return
+const Action = (props) => (
         <div>
             <div>
                 <button
@@ -13,7 +13,7 @@ const Action = (props) => {
             </div>
         </div>
     );
-};
+
 
 export default Action;
 
@@ -35,3 +35,20 @@ export default Action;
 //         );
 //     }
 // }
+
+// Explicit return
+
+// const Action = (props) => {
+//     return (
+//         <div>
+//             <div>
+//                 <button
+//                     onClick={props.handlePick}
+//                     // Check if options exist, if they don't disable button
+//                     disabled={!props.hasOptions}
+//                 >What should I do?
+//                 </button>
+//             </div>
+//         </div>
+//     );
+// };

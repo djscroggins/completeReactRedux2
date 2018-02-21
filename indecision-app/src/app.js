@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 
 import IndecisionApp from './components/IndecisionApp';
 
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
+
+
+
 // const Layout = (props) => {
 //     return (
 //         <div>
@@ -27,8 +31,3 @@ import IndecisionApp from './components/IndecisionApp';
 
 // Access something passed in via children prop; props.children in Layout
 // ReactDOM.render(<Layout><p>This is inline</p></Layout>, document.getElementById('app'));
-
-ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
-
-
-
