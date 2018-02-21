@@ -88,20 +88,25 @@ export default class IndecisionApp extends React.Component {
             <div>
                 <Header subtitle={subtitle}/>
                 {/*Determine if options exist and pass this to Action component*/}
-                <Action
-                    hasOptions={this.state.options.length > 0}
-                    // Pass method to choose option to Action component
-                    handlePick={this.handlePick}
-                />
-                <Options
-                    options={this.state.options}
-                    // Pass method to delete option as prop  to Options component
-                    handleDeleteOptions={this.handleDeleteOptions}
-                    handleDeleteOption={this.handleDeleteOption}
-                />
-                <AddOption
-                    handleAddOption={this.handleAddOption}
-                />
+                <div className="container">
+
+                    <Action
+                        hasOptions={this.state.options.length > 0}
+                        // Pass method to choose option to Action component
+                        handlePick={this.handlePick}
+                    />
+                    <Options
+                        options={this.state.options}
+                        // Pass method to delete option as prop  to Options component
+                        handleDeleteOptions={this.handleDeleteOptions}
+                        handleDeleteOption={this.handleDeleteOption}
+                    />
+                    <AddOption
+                        handleAddOption={this.handleAddOption}
+                    />
+
+                </div>
+
                 <OptionModal
                     selectedOption={this.state.selectedOption}
                     // Pass handler for clearing modal (remember to pass as reference not method call)

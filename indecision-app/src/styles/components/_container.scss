@@ -1,0 +1,9 @@
+@import "../base/settings";
+
+.container {
+  // Allows us to distribute extra space evenly
+  max-width: 60rem;
+  // Extra rems distributed evenly on left and right
+  margin: 0 auto;
+  padding: 0 $m-size;
+}
