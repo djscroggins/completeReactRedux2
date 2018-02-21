@@ -5,6 +5,7 @@ const Action = (props) => (
         <div>
             <div>
                 <button
+                    className="big-button"
                     onClick={props.handlePick}
                     // Check if options exist, if they don't disable button
                     disabled={!props.hasOptions}

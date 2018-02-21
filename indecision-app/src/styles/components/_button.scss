@@ -1,0 +1,40 @@
+@import "../base/settings";
+
+.big-button {
+  background: $purple;
+  // Get rid of border
+  border: none;
+  // Give slight 3d effect on bottom
+  // cf http://sass-lang.com/documentation/Sass/Script/Functions.html
+  border-bottom: .6rem solid darken($purple, 10%);
+  color: white;
+  font-weight: bold;
+  font-size: $l-size;
+  // Make sure button takes up entire container width
+  width: 100%;
+  margin-bottom: $xl-size;
+  // Spacing between button border and button text
+  padding: 2.4rem;
+}
+
+.big-button:disabled {
+  opacity: .5;
+}
+
+// Smaller button
+.button {
+  background: $purple;
+  border: none;
+  border-bottom: .3rem solid darken($purple, 10%);
+  color: white;
+  font-weight: 500;
+  padding: $s-size;
+}
+
+// Two hyphens for modifier syntax
+.button--link {
+  background: none;
+  border: none;
+  color: $off-white;
+  padding: 0;
+}

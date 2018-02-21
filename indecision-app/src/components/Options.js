@@ -6,7 +6,10 @@ import Option from './Option';
 const Options = (props) => (
         <div>
             {/*Call props method from IndecisionApp component*/}
-            <button onClick={props.handleDeleteOptions}>Remove all</button>
+            <button
+                className="button button--link"
+                onClick={props.handleDeleteOptions}>Remove all
+            </button>
             {props.options.length === 0 ? <p>Please add an option to get started</p> : null}
             {/*key needed for iterators; in this case just assign option name as key*/}
             {props.options.map((o) => (
