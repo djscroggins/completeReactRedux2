@@ -19,10 +19,11 @@ const Options = (props) => (
 
             {props.options.length === 0 ? <p className="widget__message">Please add an option to get started</p> : null}
             {/*key needed for iterators; in this case just assign option name as key*/}
-            {props.options.map((o) => (
+            {props.options.map((o, index) => (
                     <Option
                         key={o}
                         optionText={o}
+                        count={index + 1}
                         handleDeleteOption={props.handleDeleteOption}
                     />
                 )
