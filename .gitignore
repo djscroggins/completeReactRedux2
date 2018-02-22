@@ -3,3 +3,4 @@ indecision-app/node_modules/*
 indecision-app/commands.txt
 indecision-app/webpack-loader-notes.txt
 notes/
+expensify-app/node_modules/*
