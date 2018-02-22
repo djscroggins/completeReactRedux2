@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import IndecisionApp from './components/IndecisionApp';
+import 'normalize.css/normalize.css';
+// Load style scripts
+import './styles/styles.scss';
 
-ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
-
+ReactDOM.render(<IndecisionApp/>, document.getElementById('app'));
 
 
 // const Layout = (props) => {
